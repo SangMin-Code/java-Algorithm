@@ -14,9 +14,37 @@ public class SeqSearchSen {
 			i++;
 		}
 		*/
+		// | 0 1 2 3 4 5
+		System.out.print("   |");
+		for(int j = 0; j<a.length; j++)
+		{			
+			System.out.printf("%3d",j);
+		}
+		System.out.println();
+		//---+---------
+		System.out.print("---|");
+		for(int j = 0; j<a.length; j++)
+		{			
+			System.out.printf("---",i);
+		}	
+		System.out.println();
 		
 		for(i =0; i<a.length; i++)
-		{
+		{	
+			System.out.print("   |  ");
+			for(int j=0; j<i; j++)
+			{
+				System.out.print("   ");
+			}
+			System.out.print("*");
+			System.out.println();
+			
+			System.out.printf("%3d|",i);
+			for(int j =0; j<a.length; j++)
+			{
+				System.out.printf("%3d",a[j]);
+			}
+			System.out.println();
 			
 			if(a[i]==key) break;			
 		}
