@@ -4,13 +4,16 @@ import java.util.Scanner;
 
 public class InsertSort {
 	static void insertionSrot(int[] a, int n) {
+		int cnt = 0;
 		for(int i=1; i<n; i++)
 		{
 			int j;
 			int tmp = a[i];
+			cnt++;
 			for(j=i; j>0 && a[j-1]>tmp; j--) a[j] =a[j-1];
 			a[j]=tmp;
 		}
+		System.out.printf("cnt : %d\n",cnt);
 	}
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);
