@@ -28,6 +28,9 @@ public class MergeSort {
 			while(j<p) a[k++]= buff[j++];
 		}
 	}	
+	
+	
+	
 	static void mergeSort(int[]a, int n ) {
 		buff = new int[n];
 		__mergeSort(a,0,n-1);
