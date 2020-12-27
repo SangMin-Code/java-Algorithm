@@ -135,4 +135,61 @@ public class BinTree<K,V> {
 	public void print() {
 		printSubTree(root);
 	}
+	
+	
+	public boolean remove1(K key) {
+		Node<K,V>p = root; //스캔중인 노드 
+		Node<K,V> parent = null; //스캔 중인 노드의 부모 노드
+		boolean isLeftChild = true; //p는 부모의 왼쪽 자식 노드인지?
+		
+		while(true) {
+			if(p==null) return false;
+			int cond = comp(key,p.getKey());
+			if(cond==0) break;
+			else
+			{
+				parent = p; 
+				if(cond<0)
+				{
+					isLeftChild = true;
+					p= p.left;
+				}
+				else
+				{
+					isLeftChild = false;
+					p = p.right;
+				}
+			}
+		}
+		if(p.left == null)
+		{
+			if(p==root) root = p.right;
+			else if(isLeftChild) parent.left = p.right;
+			else parent.right = p.right;
+		}else if(p.right == null)
+		{
+			if(p==root) root = p.left;
+			else if(isLeftChild) parent.left = p.left;
+			else parent.right = p.left;
+		}else
+		{
+			parent = p;
+			Node<K,V> left = p.left;
+			isLeftChild = true;
+			while(left.right != null)
+			{
+				parent =left;
+				left = left.right;
+				isLeftChild=false;
+			}
+			p.key = left.key;
+			p.data = left.data;
+			if(isLeftChild) parent.left = left.left;
+			else parent.right = left.left;
+		}
+		return true;
+		
+		
+		
+	}//remove1
 }
